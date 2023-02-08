@@ -4,6 +4,7 @@
   "private": true,
   "homepage": "https://arnoldatk94.github.io/high-card-bootcamp",
   "dependencies": {
+    "bootstrap": "^5.2.3",
     "gh-pages": "^3.2.3",
     "react": "^18.1.0",
     "react-bootstrap": "^2.7.0",

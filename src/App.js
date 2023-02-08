@@ -1,6 +1,9 @@
 import React from "react";
 import "./App.css";
 import { makeShuffledDeck } from "./utils.js";
+import { Col, Container, Row } from "react-bootstrap";
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 
 class App extends React.Component {
   constructor(props) {
@@ -107,10 +110,22 @@ class App extends React.Component {
       <div className="App">
         <header className="App-header">
           <h3>High Card 🚀</h3>
-          <h3 color>Match Number {this.state.matchNumber}</h3>
+          <h3 style={{color: '#ffaabb'}}>Match Number {this.state.matchNumber}</h3>
           <p>There are {this.state.gameRounds} rounds left!</p>
-          <p>Player One's score is {this.state.playerOneScore}</p>
-          <p>Player Two's score is {this.state.playerTwoScore}</p>
+          <Container>
+            <Row>
+              <Col>Player One's score</Col>
+              <Col>Player Two's score</Col>
+            </Row>
+            <Row>
+              <Col>{this.state.playerOneScore}</Col>
+              <Col>{this.state.playerTwoScore}</Col>
+            </Row>
+            
+          </Container>
+          
+    
+          
           {currCardElems}
           <br />
           <button onClick={this.state.gameRounds === 0 ? this.resetGame: this.dealCards}>{this.state.dealOrReset}</button>
