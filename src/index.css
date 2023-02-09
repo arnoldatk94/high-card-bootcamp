@@ -11,3 +11,50 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+.card {
+  width: 200px;
+  height: 250px;
+  position: relative;
+  background-color: white;
+  margin: 10px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.textBlack {
+  color: black;
+}
+
+.textRed {
+  color: red;
+}
+
+.card img {
+  width: 50px;
+}
+
+.topLeft {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+}
+
+.bottomRight {
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
+}
+.outerCard {
+  justify-content: center;
+}
+
+.containter {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  width: 800px;
+}

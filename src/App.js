@@ -3,6 +3,7 @@ import "./App.css";
 import { makeShuffledDeck } from "./utils.js";
 import { Col, Container, Row } from "react-bootstrap";
 import 'bootstrap/dist/css/bootstrap.min.css';
+import Cards from "./Component/Cards";
 
 
 
@@ -105,8 +106,11 @@ class App extends React.Component {
   render() {
     const currCardElems = this.state.currCards.map(({ name, suit },index) => (
       // Give each list element a unique key
-      <div key={`${name}${suit}`}>
-       Player {index+1} drew {name} of {suit}
+      <div key={`${name}${suit}`} className='outerCard'>
+       <p>Player {index+1} drew</p>
+       <Cards name={name} suits={suit}/>
+      <cards />
+
       </div>
     ));
     // Can console.log and do for loops but better to do in own functions
@@ -118,8 +122,8 @@ class App extends React.Component {
           <h3>High Card 🚀</h3>
           <h3 style={{color: '#ffaabb'}}>Match Number {this.state.matchNumber}</h3>
           <h4>There are {this.state.gameRounds} rounds left!</h4>
-          <Container>
-            
+          
+          <Container>  
             <Row className="justify-content-md-center" style={{color: '#1db877'}}>
               Matches Won!
             </Row>
@@ -136,7 +140,7 @@ class App extends React.Component {
           
     
           
-          <div class='container'>{currCardElems}</div>
+          <div className="containter">{currCardElems}</div>
           <br />
           <button onClick={this.state.gameRounds === 0 ? this.resetGame: this.dealCards}>{this.state.dealOrReset}</button>
           <p>{this.state.result}</p>
