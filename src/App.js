@@ -5,6 +5,7 @@ import { Col, Container, Row } from "react-bootstrap";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 
+
 class App extends React.Component {
   constructor(props) {
     // Always call super with props in constructor to initialise parent class
@@ -22,6 +23,9 @@ class App extends React.Component {
       gameRounds: 26,
       dealOrReset: "Deal",
       matchNumber: 1,
+      overallWinner: 0,
+      playerOneMatch: 0,
+      playerTwoMatch: 0,
     };
   }
 
@@ -56,7 +60,6 @@ class App extends React.Component {
       
     }))
     this.state.matchNumber = this.state.matchNumber + 1
-    console.log('Match Number ' + this.state.matchNumber)
   }
 
   componentDidMount () {
@@ -65,11 +68,11 @@ class App extends React.Component {
     
   }
   componentDidUpdate () {
+    console.log(this.state.currCards)
   }
 
   componentWillUnmount () {
     console.log('end')
-    console.log(this.state.currCards)
   }
 
   checkWinner () {
@@ -85,22 +88,25 @@ class App extends React.Component {
       this.setState({result: "Draw!"})
     }
     this.state.gameRounds = this.state.gameRounds - 1
+
     this.state.overallWinner = this.state.playerOneScore - this.state.playerTwoScore
     if (this.state.gameRounds === 0) {
       this.setState({dealOrReset: "Reset"})
       if (this.state.overallWinner > 0) {
         this.setState({result: "Player 1 has won this match"})
+        this.state.playerOneMatch = this.state.playerOneMatch + 1
       } else if (this.state.overallWinner < 0) {
         this.setState({result: "Player 2 has won this match"})
+        this.state.playerTwoMatch = this.state.playerTwoMatch + 1
       } else (this.setState({result: "This round ends in a draw"}))
     }
   }
 
   render() {
-    const currCardElems = this.state.currCards.map(({ name, suit }) => (
+    const currCardElems = this.state.currCards.map(({ name, suit },index) => (
       // Give each list element a unique key
       <div key={`${name}${suit}`}>
-        {name} of {suit}
+       Player {index+1} drew {name} of {suit}
       </div>
     ));
     // Can console.log and do for loops but better to do in own functions
@@ -111,22 +117,26 @@ class App extends React.Component {
         <header className="App-header">
           <h3>High Card 🚀</h3>
           <h3 style={{color: '#ffaabb'}}>Match Number {this.state.matchNumber}</h3>
-          <p>There are {this.state.gameRounds} rounds left!</p>
+          <h4>There are {this.state.gameRounds} rounds left!</h4>
           <Container>
-            <Row>
-              <Col>Player One's score</Col>
-              <Col>Player Two's score</Col>
+            
+            <Row className="justify-content-md-center" style={{color: '#1db877'}}>
+              Matches Won!
             </Row>
             <Row>
-              <Col>{this.state.playerOneScore}</Col>
-              <Col>{this.state.playerTwoScore}</Col>
+              <Col style={{color: '#ad0e38'}}>Player One</Col>
+              <Col style={{color: '#4287f5'}}>Player Two</Col>
+            </Row>
+            <Row>
+              <Col style={{color: '#ad0e38'}}>{this.state.playerOneMatch}</Col>
+              <Col style={{color: '#4287f5'}}>{this.state.playerTwoMatch}</Col>
             </Row>
             
           </Container>
           
     
           
-          {currCardElems}
+          <div class='container'>{currCardElems}</div>
           <br />
           <button onClick={this.state.gameRounds === 0 ? this.resetGame: this.dealCards}>{this.state.dealOrReset}</button>
           <p>{this.state.result}</p>
