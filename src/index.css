@@ -12,7 +12,7 @@ code {
     monospace;
 }
 
-.card {
+.Card {
   width: 200px;
   height: 250px;
   position: relative;
@@ -33,7 +33,7 @@ code {
   color: red;
 }
 
-.card img {
+.Card img {
   width: 50px;
 }
 

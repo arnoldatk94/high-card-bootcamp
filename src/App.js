@@ -108,7 +108,8 @@ class App extends React.Component {
       // Give each list element a unique key
       <div key={`${name}${suit}`} className='outerCard'>
        <p>Player {index+1} drew</p>
-       <Cards name={name} suits={suit}/>
+       {/* <p>{name}Of{suit}</p> */}
+       <Cards name={name} suit={suit}/>
       <cards />
 
       </div>

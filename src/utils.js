@@ -40,15 +40,15 @@ const makeDeck = () => {
 
       // If rank is 1, 11, 12, or 13, set cardName to the ace or face card's name
       if (cardName === "1") {
-        cardName = "Ace";
+        cardName = "ace";
         // Ace has higher rank than all other cards
         cardRank = 14;
       } else if (cardName === "11") {
-        cardName = "Jack";
+        cardName = "jack";
       } else if (cardName === "12") {
-        cardName = "Queen";
+        cardName = "queen";
       } else if (cardName === "13") {
-        cardName = "King";
+        cardName = "king";
       }
 
       // Create a new card with the current name, suit, and rank
