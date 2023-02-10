@@ -136,6 +136,14 @@ class App extends React.Component {
               <Col style={{color: '#ad0e38'}}>{this.state.playerOneMatch}</Col>
               <Col style={{color: '#4287f5'}}>{this.state.playerTwoMatch}</Col>
             </Row>
+            <Row>
+              <Col style={{color: '#ad0e38'}}>Player One's rounds won</Col>
+              <Col style={{color: '#4287f5'}}>Player Two's rounds won</Col>
+            </Row>
+            <Row>
+              <Col style={{color: '#ad0e38'}}>{this.state.playerOneScore}</Col>
+              <Col style={{color: '#4287f5'}}>{this.state.playerTwoScore}</Col>
+            </Row>
             
           </Container>
           
